@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Pin, PinSmall, HintPin, SelectablePin } from "./components/Pin";
 import { Button, RefreshButton, ShuffleButton } from "./components/Button";
 import Logo from "./components/Logo";
+import Row from "./modules/Row";
 import styled from "styled-components";
+import { colors } from "./enums";
 
 const Container = styled.div`
   display: grid;
@@ -19,22 +21,12 @@ const Section = styled.section`
   align-items: center;
 `;
 
-const COLORS = {
-  RED: "#DB2053",
-  BLUE: "#3CBBEC",
-  GREEN: "#23AF74",
-  YELLOW: "#E4AE31",
-  ORANGE: "#DF5341",
-  PURPLE: "#862D8D",
-  BLACK: "#000000",
-  WHITE: "#FFFFFF",
-};
-
 const App = () => {
   const [selected, setSelected] = useState(false);
-  const [color, setColor] = useState(COLORS.RED);
+  const [color, setColor] = useState(colors.red);
+
   const onClick = () => setSelected(!selected);
-  const onColorChange = () => setColor(COLORS.BLUE);
+  const onColorChange = () => setColor(colors.blue);
 
   return (
     <Container>
@@ -47,7 +39,7 @@ const App = () => {
         <Pin />
         <h2>Clickable Pin</h2>
         <SelectablePin
-          color={COLORS.RED}
+          color={colors.red}
           onClick={onClick}
           selected={selected}
         />
@@ -65,6 +57,9 @@ const App = () => {
         <Button onClick={() => console.log("Button click")}>Try Again</Button>
         <RefreshButton onClick={() => console.log("Refresh click")} />
         <ShuffleButton onClick={() => console.log("Shuffle click")} />
+      </Section>
+      <Section>
+        <Row />
       </Section>
     </Container>
   );
