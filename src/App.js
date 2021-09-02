@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Pin, PinSmall, HintPin, SelectablePin } from "./components/Pin";
 import { Button, RefreshButton, ShuffleButton } from "./components/Button";
 import Logo from "./components/Logo";
+import Row from "./components/Row";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -65,6 +66,9 @@ const App = () => {
         <Button onClick={() => console.log("Button click")}>Try Again</Button>
         <RefreshButton onClick={() => console.log("Refresh click")} />
         <ShuffleButton onClick={() => console.log("Shuffle click")} />
+      </Section>
+      <Section>
+        <Row />
       </Section>
     </Container>
   );
