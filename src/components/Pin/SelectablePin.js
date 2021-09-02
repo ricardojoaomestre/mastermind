@@ -1,17 +1,15 @@
-import styled from 'styled-components';
-import Pin from './Pin';
-import { IoCheckmarkOutline } from 'react-icons/io5';
+import styled from "styled-components";
+import Pin from "./Pin";
+import { IoCheckmarkSharp } from "react-icons/io5";
 
-const PinIcon = styled(IoCheckmarkOutline)`
-    width: 20px;
-    height: 20px;
-    stroke: #FFFFFF;
+const PinIcon = styled(IoCheckmarkSharp)`
+  width: 20px;
+  height: 20px;
+  stroke: #ffffff;
 `;
 
-const SelectablePin =  ({selected, ...otherProps}) => (
-    <Pin {...otherProps} >
-        {selected && <PinIcon />}
-    </Pin>
+const SelectablePin = ({ selected, ...otherProps }) => (
+  <Pin {...otherProps}>{selected && <PinIcon />}</Pin>
 );
 
 export default SelectablePin;
