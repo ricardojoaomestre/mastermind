@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Pin, PinSmall, HintPin, SelectablePin } from "./components/Pin";
 import { Button, RefreshButton, ShuffleButton } from "./components/Button";
+import Logo from "./components/Logo";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -37,6 +38,9 @@ const App = () => {
 
   return (
     <Container>
+      <Section>
+        <Logo />
+      </Section>
       <Section>
         <h1>Pin</h1>
         <h2>Simple Pin</h2>
