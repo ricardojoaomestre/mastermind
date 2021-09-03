@@ -14,4 +14,13 @@ body {
   -moz-font-smoothing: antialiased !important;
   text-rendering: optimizelegibility !important;
   letter-spacing: 0.03em;
+  background: url("./assets/background.png") no-repeat fixed center;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  body {
+    background: none;
+    background-color: #d2d4de;
+  }
 }

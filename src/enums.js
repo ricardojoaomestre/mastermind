@@ -9,10 +9,20 @@ const colors = {
   white: "#FFFFFF",
 };
 
+const pinColors = {
+  red: colors.red,
+  blue: colors.blue,
+  green: colors.green,
+  yellow: colors.yellow,
+  orange: colors.orange,
+  purple: colors.purple,
+  black: colors.black,
+};
+
 const hintTypes = {
   correct: 1,
   semicorrect: 2,
   none: 0,
 };
 
-export { colors, hintTypes };
+export { colors, hintTypes, pinColors };
