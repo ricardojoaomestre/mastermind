@@ -1,5 +1,6 @@
 import device from "../../styles/breakpoints";
 import styled from "styled-components";
+import { colors } from "../../styles/colors";
 
 export const StyledRowContainer = styled.div`
   display: flex;
@@ -7,14 +8,14 @@ export const StyledRowContainer = styled.div`
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #c4c4c4;
+  border-bottom: 1px solid ${colors.grey};
   padding: 1rem;
 `;
 
 export const StyledRowNumber = styled.div`
   font-size: 1.5rem;
   padding: 9px auto 9px 10px;
-  color: #c4c4c4;
+  color: ${colors.grey};
 
   @media ${device.tablet} {
     display: none;

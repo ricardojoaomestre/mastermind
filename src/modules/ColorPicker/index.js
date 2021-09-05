@@ -1,22 +1,23 @@
-import styled from "styled-components";
 import { SelectablePin } from "../../components/Pin";
-import { pinColors } from "../../enums";
+import { pinColors } from "../../styles/colors";
+import { StyledColorPickerContainer } from "./ColorPicker.style";
+import GameContext from "../../context";
+import { useContext } from "react";
 
-const StyledColorPickerContainer = styled.div`
-  background-color: #ffffff;
-  padding: 20px 10px;
-  border-radius: 20px 0 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`;
-
-const ColorPicker = () => (
-  <StyledColorPickerContainer>
-    {Object.keys(pinColors).map((key, index) => (
-      <SelectablePin color={pinColors[key]} key={`ColorPicker${index}`} />
-    ))}
-  </StyledColorPickerContainer>
-);
+const ColorPicker = () => {
+  const { selectedColor, setSelectedColor } = useContext(GameContext);
+  return (
+    <StyledColorPickerContainer>
+      {Object.keys(pinColors).map((key, index) => (
+        <SelectablePin
+          selected={pinColors[key] === selectedColor}
+          color={pinColors[key]}
+          key={`ColorPicker${index}`}
+          onClick={() => setSelectedColor(pinColors[key])}
+        />
+      ))}
+    </StyledColorPickerContainer>
+  );
+};
 
 export default ColorPicker;
