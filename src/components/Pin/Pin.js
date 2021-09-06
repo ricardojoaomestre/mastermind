@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import BasePin from './BasePin';
+import styled from "styled-components";
+import BasePin from "./BasePin";
 
 const StyledPin = styled(BasePin)`
-    width: 42px;
-    height: 42px;
-    border-radius: 21px;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
 `;
 
-const Pin =  (props) => <StyledPin {...props} />;
+const Pin = (props) => <StyledPin {...props} />;
 
 export default Pin;

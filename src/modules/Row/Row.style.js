@@ -26,6 +26,7 @@ export const StyledGuessContainer = styled.div`
   flex-direction: row;
   justify-content: stretch;
   gap: 0.5rem;
+  margin-right: 1rem;
 `;
 
 export const StyledHintContainer = styled.div`

@@ -21,7 +21,7 @@ const BoardContainer = styled.div`
   }
 `;
 
-const ControlPanel = styled.div`
+const Panel = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -29,4 +29,4 @@ const ControlPanel = styled.div`
   gap: 10px;
 `;
 
-export { BoardContainer, ControlPanel };
+export { BoardContainer, Panel };

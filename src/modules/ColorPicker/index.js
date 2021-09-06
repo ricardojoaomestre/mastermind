@@ -1,19 +1,16 @@
 import { SelectablePin } from "../../components/Pin";
 import { pinColors } from "../../styles/colors";
 import { StyledColorPickerContainer } from "./ColorPicker.style";
-import GameContext from "../../context";
-import { useContext } from "react";
 
-const ColorPicker = () => {
-  const { selectedColor, setSelectedColor } = useContext(GameContext);
+const ColorPicker = ({ selectedColor, onColorChange, ...otherProps }) => {
   return (
-    <StyledColorPickerContainer>
+    <StyledColorPickerContainer {...otherProps}>
       {Object.keys(pinColors).map((key, index) => (
         <SelectablePin
           selected={pinColors[key] === selectedColor}
           color={pinColors[key]}
           key={`ColorPicker${index}`}
-          onClick={() => setSelectedColor(pinColors[key])}
+          onClick={() => onColorChange(pinColors[key])}
         />
       ))}
     </StyledColorPickerContainer>

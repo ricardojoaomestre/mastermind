@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { HintPin, SelectablePin } from "../Pin";
 
-const StyledRowContainer = styled.div`
+const StyledSequenceContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -11,7 +10,7 @@ const StyledRowContainer = styled.div`
   padding: 1rem;
 `;
 
-const StyledRowNumber = styled.div`
+const StyledSequenceNumber = styled.div`
   font-size: 1.5rem;
   padding: 9px auto 9px 10px;
   color: #c4c4c4;
@@ -30,22 +29,9 @@ const StyledHintContainer = styled.div`
   gap: 0.5rem;
 `;
 
-const Row = (props) => (
-  <StyledRowContainer>
-    <StyledRowNumber>1</StyledRowNumber>
-    <StyledGuessContainer>
-      <SelectablePin />
-      <SelectablePin />
-      <SelectablePin />
-      <SelectablePin />
-    </StyledGuessContainer>
-    <StyledHintContainer>
-      <HintPin />
-      <HintPin />
-      <HintPin />
-      <HintPin />
-    </StyledHintContainer>
-  </StyledRowContainer>
-);
-
-export default Row;
+export {
+  StyledSequenceContainer,
+  StyledSequenceNumber,
+  StyledGuessContainer,
+  StyledHintContainer,
+};

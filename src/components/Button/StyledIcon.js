@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { IoShuffle, IoReload } from "react-icons/io5";
+import {
+  IoShuffle,
+  IoReload,
+  IoCaretForwardCircleOutline,
+} from "react-icons/io5";
 
 const styledIcon = (icon) => styled(icon)`
   width: 20px;
@@ -9,5 +13,6 @@ const styledIcon = (icon) => styled(icon)`
 `;
 const ShuffleIcon = styledIcon(IoShuffle);
 const ReloadIcon = styledIcon(IoReload);
+const PlayIcon = styledIcon(IoCaretForwardCircleOutline);
 
-export { ShuffleIcon, ReloadIcon };
+export { ShuffleIcon, ReloadIcon, PlayIcon };
