@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import device from "../../styles/breakpoints";
 
 const StyledSequenceContainer = styled.div`
   display: flex;
@@ -14,6 +15,10 @@ const StyledSequenceNumber = styled.div`
   font-size: 1.5rem;
   padding: 9px auto 9px 10px;
   color: #c4c4c4;
+
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 const StyledGuessContainer = styled.div`
   display: flex;
