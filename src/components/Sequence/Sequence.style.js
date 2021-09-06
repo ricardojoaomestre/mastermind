@@ -1,7 +1,7 @@
-import device from "../../styles/breakpoints";
 import styled from "styled-components";
+import device from "../../styles/breakpoints";
 
-export const StyledRowContainer = styled.div`
+const StyledSequenceContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -11,7 +11,7 @@ export const StyledRowContainer = styled.div`
   padding: 1rem;
 `;
 
-export const StyledRowNumber = styled.div`
+const StyledSequenceNumber = styled.div`
   font-size: 1.5rem;
   padding: 9px auto 9px 10px;
   color: #c4c4c4;
@@ -20,16 +20,23 @@ export const StyledRowNumber = styled.div`
     display: none;
   }
 `;
-export const StyledGuessContainer = styled.div`
+const StyledGuessContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: stretch;
   gap: 0.5rem;
 `;
 
-export const StyledHintContainer = styled.div`
+const StyledHintContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: 0.3rem;
+  gap: 0.5rem;
 `;
+
+export {
+  StyledSequenceContainer,
+  StyledSequenceNumber,
+  StyledGuessContainer,
+  StyledHintContainer,
+};
