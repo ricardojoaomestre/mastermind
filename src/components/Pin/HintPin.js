@@ -5,7 +5,7 @@ const StyledHintPin = styled(BasePin)`
   width: 14px;
   height: 14px;
   border-radius: 8px;
-  border: ${(props) => (props.color ? "none" : "1px solid #c4c4c4")};
+  border: 1px solid #c4c4c4;
   background-color: ${(props) => props.color || "transparent"};
 
   &:hover {

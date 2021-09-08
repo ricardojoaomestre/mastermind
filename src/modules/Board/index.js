@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import ColorPicker from "../ColorPicker";
 import { ShuffleButton, RefreshButton } from "../../components/Button";
-import { BoardContainer, Panel } from "./Board.style";
+import {
+  BoardContainer,
+  ColorPanel,
+  PlayPanel,
+  RemainingTentatives,
+} from "./Board.style";
 import {
   InteractiveSequece,
   ReadonlySequence,
@@ -14,6 +19,7 @@ const Board = () => {
   const [answers, setAnswers] = useState([]);
   const emptySequence = [null, null, null, null];
   const [currentSequence, setCurrentSequence] = useState([...emptySequence]);
+  const [guessRemaining, setGuessRemaining] = useState(9);
   const [secret, setSecret] = useState([]);
 
   const generateSecret = () => {
@@ -39,15 +45,38 @@ const Board = () => {
         }
       }
     }
-    console.log(secret);
-    console.log(seq);
     const arr = [...emptySequence].fill(colors.black, 0, correct);
-    arr.fill(colors.white, correct, correct + semiCorrect);
+    arr.fill(colors.grey, correct, correct + semiCorrect);
     console.log(arr);
     return arr;
   };
 
-  useEffect(() => setSecret(generateSecret()), []);
+  useEffect(() => {
+    setSecret(generateSecret());
+    //mock
+    // setSequences([
+    //   ["#000000", "#C4C4C4", "#C4C4C4", "#C4C4C4"],
+    //   ["#000000", "#C4C4C4", "#C4C4C4", "#C4C4C4"],
+    //   ["#000000", "#C4C4C4", "#C4C4C4", "#C4C4C4"],
+    //   ["#000000", "#C4C4C4", "#C4C4C4", "#C4C4C4"],
+    //   ["#000000", "#C4C4C4", "#C4C4C4", "#C4C4C4"],
+    //   ["#000000", "#C4C4C4", "#C4C4C4", "#C4C4C4"],
+    //   ["#000000", "#C4C4C4", "#C4C4C4", "#C4C4C4"],
+    //   ["#000000", "#C4C4C4", "#C4C4C4", "#C4C4C4"],
+    //   ["#000000", "#C4C4C4", "#C4C4C4", "#C4C4C4"],
+    // ]);
+    // setAnswers([
+    //   [colors.black, colors.black, colors.grey, null],
+    //   [colors.black, colors.black, colors.grey, null],
+    //   [colors.black, colors.black, colors.grey, null],
+    //   [colors.black, colors.black, colors.grey, null],
+    //   [colors.black, colors.black, colors.grey, null],
+    //   [colors.black, colors.black, colors.grey, null],
+    //   [colors.black, colors.black, colors.grey, null],
+    //   [colors.black, colors.black, colors.grey, null],
+    //   [colors.black, colors.black, colors.grey, null],
+    // ]);
+  }, []);
 
   const onColorChange = (color) => {
     setSelectedColor(color);
@@ -63,19 +92,23 @@ const Board = () => {
     setSequences((s) => [...s, currentSequence]);
     setAnswers((a) => [...a, calculateHint(secret, currentSequence)]);
     setCurrentSequence([...emptySequence]);
+    setGuessRemaining((x) => x - 1);
   };
 
   return (
     <BoardContainer>
-      <Panel>
+      <ColorPanel>
         <ColorPicker
           selectedColor={selectedColor}
           onColorChange={onColorChange}
         />
         <ShuffleButton />
         <RefreshButton />
-      </Panel>
-      <Panel style={{ flex: 1 }}>
+      </ColorPanel>
+      <PlayPanel style={{ flex: 1 }}>
+        <RemainingTentatives>
+          {guessRemaining} guesses remaining
+        </RemainingTentatives>
         {sequences.map((sequence, index) => (
           <ReadonlySequence
             number={index + 1}
@@ -84,11 +117,12 @@ const Board = () => {
           />
         ))}
         <InteractiveSequece
+          number={sequences.length + 1}
           colors={currentSequence}
           onPlaySubmit={onPlaySubmit}
           onSequenceChange={onSequenceChange}
         />
-      </Panel>
+      </PlayPanel>
     </BoardContainer>
   );
 };
