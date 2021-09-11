@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import ColorPicker from "../ColorPicker";
-import { ShuffleButton, RefreshButton } from "../../components/Button";
-import { BoardContainer, Panel } from "./Board.style";
+import { ShuffleButton, RefreshButton, Button } from "../../components/Button";
+import Alert from "../../components/Alert";
+
+import {
+  BoardContainer,
+  ColorPanel,
+  PlayPanel,
+  RemainingTentatives,
+} from "./Board.style";
 import {
   InteractiveSequece,
   ReadonlySequence,
@@ -14,9 +21,12 @@ const Board = () => {
   const [answers, setAnswers] = useState([]);
   const emptySequence = [null, null, null, null];
   const [currentSequence, setCurrentSequence] = useState([...emptySequence]);
+  const [guessRemaining, setGuessRemaining] = useState(9);
   const [secret, setSecret] = useState([]);
+  const [gameOver, setGameOver] = useState(false);
+  const [gameWin, setGameWin] = useState(false);
 
-  const generateSecret = () => {
+  const generateSequence = () => {
     const palette = [...Object.keys(pinColors)];
     const arr = [];
     for (var i = 0, max = palette.length; i < 4; i++, max--) {
@@ -39,15 +49,26 @@ const Board = () => {
         }
       }
     }
-    console.log(secret);
-    console.log(seq);
     const arr = [...emptySequence].fill(colors.black, 0, correct);
-    arr.fill(colors.white, correct, correct + semiCorrect);
+    arr.fill(colors.grey, correct, correct + semiCorrect);
     console.log(arr);
     return arr;
   };
 
-  useEffect(() => setSecret(generateSecret()), []);
+  const reset = () => {
+    setSelectedColor(colors.red);
+    setSecret(generateSequence());
+    setSequences([]);
+    setAnswers([]);
+    setCurrentSequence([...emptySequence]);
+    setGuessRemaining(9);
+    setGameOver(false);
+    setGameWin(false);
+  };
+
+  useEffect(() => {
+    setSecret(generateSequence());
+  }, []);
 
   const onColorChange = (color) => {
     setSelectedColor(color);
@@ -60,22 +81,33 @@ const Board = () => {
   };
 
   const onPlaySubmit = () => {
-    setSequences((s) => [...s, currentSequence]);
-    setAnswers((a) => [...a, calculateHint(secret, currentSequence)]);
-    setCurrentSequence([...emptySequence]);
+    const hint = calculateHint(secret, currentSequence);
+    if (hint.filter((x) => x === colors.black) === 4) {
+      setGameWin(true);
+    } else if (guessRemaining - 1 === 0) {
+      setGameOver(true);
+    } else {
+      setSequences((s) => [...s, currentSequence]);
+      setAnswers((a) => [...a, hint]);
+      setCurrentSequence([...emptySequence]);
+      setGuessRemaining((x) => x - 1);
+    }
   };
 
   return (
     <BoardContainer>
-      <Panel>
+      <ColorPanel>
         <ColorPicker
           selectedColor={selectedColor}
           onColorChange={onColorChange}
         />
-        <ShuffleButton />
-        <RefreshButton />
-      </Panel>
-      <Panel style={{ flex: 1 }}>
+        <ShuffleButton onClick={() => setCurrentSequence(generateSequence())} />
+        <RefreshButton onClick={reset} />
+      </ColorPanel>
+      <PlayPanel style={{ flex: 1 }}>
+        <RemainingTentatives>
+          {guessRemaining} guesses remaining
+        </RemainingTentatives>
         {sequences.map((sequence, index) => (
           <ReadonlySequence
             number={index + 1}
@@ -84,11 +116,24 @@ const Board = () => {
           />
         ))}
         <InteractiveSequece
+          number={sequences.length + 1}
           colors={currentSequence}
           onPlaySubmit={onPlaySubmit}
           onSequenceChange={onSequenceChange}
         />
-      </Panel>
+      </PlayPanel>
+      {gameOver && (
+        <Alert>
+          <p>😔 You've failed to break the code</p>
+          <Button onClick={reset}>Try Again</Button>
+        </Alert>
+      )}
+      {gameWin && (
+        <Alert>
+          <p>😄 You've broken the code!</p>
+          <Button onClick={reset}>Play Again</Button>
+        </Alert>
+      )}
     </BoardContainer>
   );
 };

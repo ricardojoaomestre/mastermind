@@ -1,10 +1,9 @@
 import { SelectablePin } from "../Pin";
-import { PlayButton } from "../Button";
+import { Button } from "../Button";
 import {
   StyledSequenceContainer,
   StyledSequenceNumber,
   StyledGuessContainer,
-  StyledHintContainer,
 } from "./Sequence.style";
 
 const InteractiveSequence = ({
@@ -25,9 +24,13 @@ const InteractiveSequence = ({
         />
       ))}
     </StyledGuessContainer>
-    <StyledHintContainer>
-      <PlayButton onClick={onPlaySubmit} />
-    </StyledHintContainer>
+
+    <Button
+      disabled={colors.filter((x) => x !== null).length !== 4}
+      onClick={onPlaySubmit}
+    >
+      Ok
+    </Button>
   </StyledSequenceContainer>
 );
 

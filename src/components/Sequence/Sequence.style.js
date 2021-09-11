@@ -8,12 +8,19 @@ const StyledSequenceContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #c4c4c4;
-  padding: 1rem;
+  padding: 0.4rem;
+  width: 70%;
+  max-width: 450px;
+
+  @media ${device.tablet} {
+    width: 90%;
+    max-width: 300px;
+  }
 `;
 
 const StyledSequenceNumber = styled.div`
   font-size: 1.5rem;
-  padding: 9px auto 9px 10px;
+  padding: 9px 0 9px 10px;
   color: #c4c4c4;
 
   @media ${device.tablet} {
@@ -25,6 +32,8 @@ const StyledGuessContainer = styled.div`
   flex-direction: row;
   justify-content: stretch;
   gap: 0.5rem;
+  flex-grow: 1;
+  justify-content: space-around;
 `;
 
 const StyledHintContainer = styled.div`
