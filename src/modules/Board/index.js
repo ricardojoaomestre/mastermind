@@ -82,7 +82,8 @@ const Board = () => {
 
   const onPlaySubmit = () => {
     const hint = calculateHint(secret, currentSequence);
-    if (hint.filter((x) => x === colors.black) === 4) {
+    const correctCount = hint.filter((x) => x === colors.black).length;
+    if (correctCount === 4) {
       setGameWin(true);
     } else if (guessRemaining - 1 === 0) {
       setGameOver(true);
@@ -113,6 +114,7 @@ const Board = () => {
             number={index + 1}
             colors={sequence}
             hints={answers[index]}
+            key={`Sequence_${index}`}
           />
         ))}
         <InteractiveSequece
