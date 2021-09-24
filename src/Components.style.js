@@ -19,7 +19,7 @@ export const PrimaryButton = styled(Button)`
   padding: 8px 16px;
 
   @media ${({ theme }) => theme.devices.tablet} {
-    width: 100%;
+    width: auto;
   }
 `;
 
@@ -75,37 +75,37 @@ export const Sequence = styled.li`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
+  padding: 1px 4px 10px 4px;
   margin-bottom: 10px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.darkgrey};
 
   @media ${({ theme }) => theme.devices.tablet} {
-    padding: 1px 4px 10px 4px;
+    padding: 5px 10px;
   }
 `;
 
 export const SequenceNumber = styled.span`
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.darkgrey};
+  display: none;
 
   @media ${({ theme }) => theme.devices.tablet} {
-    display: none;
+    display: block;
+    font-size: 1.5rem;
+    color: ${({ theme }) => theme.colors.darkgrey};
   }
 `;
 
 export const SequenceColorList = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex: 1;
+  margin-right: 10px;
 
   @media ${({ theme }) => theme.devices.tablet} {
-    justify-content: space-between;
     margin-right: 20px;
   }
 
-  @media ${({ theme }) => theme.devices.phone} {
-    margin-right: 10px;
-    justify-content: space-between;
+  @media ${({ theme }) => theme.devices.desktop} {
+    justify-content: space-evenly;
   }
 `;
 
@@ -120,31 +120,34 @@ export const CodeHints = styled.div`
 `;
 
 export const Alert = styled.div`
-  position: absolute;
-  width: 80%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  bottom: 0;
+  left: 0;
   padding: 40px;
+
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.grey};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: ${({ theme }) => theme.colors.black};
-  border-radius: 20px;
-  background-color: ${({ theme }) => theme.toRGBA(theme.colors.darkgrey, 0.6)};
-  backdrop-filter: blur(4px);
+  box-shadow: 0 -2px 3px ${({ theme }) => theme.colors.darkgrey};
+  border-radius: 20px 20px 0 0;
   z-index: 1;
 
-  @media ${({ theme }) => theme.devices.tablet} {
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    transform: none;
+  @media ${({ theme }) => theme.devices.desktop} {
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    box-shadow: none;
+    transform: translate(-50%, -50%);
     padding: 20px;
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.grey};
+    border-radius: 20px;
+    background-color: ${({ theme }) =>
+      theme.toRGBA(theme.colors.darkgrey, 0.6)};
   }
 `;
 
