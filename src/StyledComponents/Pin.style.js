@@ -5,7 +5,7 @@ export const Pin = styled.div`
   height: 42px;
   border: none;
   border-radius: 21px;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.theme.pinColors[props.color]};
 
   &:hover {
     cursor: pointer;

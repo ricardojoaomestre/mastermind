@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Base = styled.body`
+export const Base = styled.div`
   font-family: Rubik, sans-serif;
   font-size: 16px;
   height: 100vh;
@@ -61,6 +61,7 @@ export const ColorSelectorList = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 0 1.2rem 0;
   padding: 20px 10px;
+  color: ${({ theme }) => theme.colors.white};
 
   @media ${({ theme }) => theme.devices.desktop} {
     border-radius: 1.2rem 0 1.2rem 0;

@@ -23,6 +23,17 @@ const pinColors = {
   empty: colors.lightgrey,
 };
 
+const gameColors = {
+  RED: "red",
+  BLUE: "blue",
+  GREEN: "green",
+  YELLOW: "yellow",
+  ORANGE: "orange",
+  PURPLE: "purple",
+  BLACK: "black",
+  EMPTY: "empty",
+};
+
 const size = {
   phone: "320px",
   tablet: "768px",
@@ -48,6 +59,7 @@ const toRGBA = (hex, opacity) => {
 
 const theme = {
   colors,
+  gameColors,
   pinColors,
   devices,
   toRGBA,
