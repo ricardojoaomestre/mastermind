@@ -26,13 +26,13 @@ const pinColors = {
 const size = {
   phone: "320px",
   tablet: "768px",
-  desktop: "2560px",
+  desktop: "1024px",
 };
 
 const devices = {
-  phone: `(max-width: ${size.phone})`,
-  tablet: `(max-width: ${size.tablet})`,
-  desktop: `(max-width: ${size.desktop})`,
+  phone: `(min-width: ${size.phone})`,
+  tablet: `(min-width: ${size.tablet})`,
+  desktop: `(min-width: ${size.desktop})`,
 };
 
 const toRGBA = (hex, opacity) => {
