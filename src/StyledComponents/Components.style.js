@@ -67,7 +67,7 @@ export const SequenceList = styled.ol`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 export const Sequence = styled.li`
@@ -96,16 +96,13 @@ export const SequenceNumber = styled.span`
 
 export const SequenceColorList = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex: 1;
   margin-right: 10px;
 
   @media ${({ theme }) => theme.devices.tablet} {
     margin-right: 20px;
-  }
-
-  @media ${({ theme }) => theme.devices.desktop} {
-    justify-content: space-evenly;
+    margin-left: 20px;
   }
 `;
 
@@ -136,7 +133,7 @@ export const Alert = styled.div`
   border-radius: 20px 20px 0 0;
   z-index: 1;
 
-  @media ${({ theme }) => theme.devices.desktop} {
+  @media ${({ theme }) => theme.devices.tablet} {
     position: absolute;
     width: 80%;
     left: 50%;

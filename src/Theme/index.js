@@ -31,13 +31,12 @@ const gameColors = {
   ORANGE: "orange",
   PURPLE: "purple",
   BLACK: "black",
-  EMPTY: "empty",
 };
 
 const size = {
   phone: "320px",
   tablet: "768px",
-  desktop: "1024px",
+  desktop: "1440px",
 };
 
 const devices = {
