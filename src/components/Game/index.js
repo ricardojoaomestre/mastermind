@@ -70,7 +70,14 @@ const Game = () => {
 
   const shuffleNewSequence = () => setSequence(generateRandomSequence());
 
-  const restartGame = () => true;
+  const restartGame = () => {
+    setSequence(EMPTY_SEQUENCE);
+    setSequences([]);
+    setIsWinner(false);
+    setIsLoser(false);
+    setSelectedColor(gameColors.RED);
+    setSecret(generateRandomSequence());
+  };
 
   const addSequenceColor = (index) => {
     const temp = [...sequence];
@@ -81,7 +88,6 @@ const Game = () => {
   const addNewSequence = () => {
     const answer = getAnswer();
     const temp = { sequence, answer };
-    console.log(temp);
     setSequences((sequences) => [...sequences, temp]);
     setSequence([...EMPTY_SEQUENCE]);
   };
@@ -102,22 +108,24 @@ const Game = () => {
 
         <SequenceList>
           <Sequences value={sequences} />
-          <NewSequence
-            sequence={sequence}
-            number={sequences.length + 1}
-            onChange={addSequenceColor}
-            onSubmit={addNewSequence}
-          />
+          {!isLoser && (
+            <NewSequence
+              sequence={sequence}
+              number={sequences.length + 1}
+              onChange={addSequenceColor}
+              onSubmit={addNewSequence}
+            />
+          )}
         </SequenceList>
       </Content>
       {(isWinner || isLoser) && (
         <Alert>
           <AlertMessage>
             {isWinner
-              ? `Not so long message to say something important!`
-              : `Loser!`}
+              ? `Congratulations, you broke the secret!`
+              : `You didn't figure out the secret! Try again.`}
           </AlertMessage>
-          <PrimaryButton>Hit me!</PrimaryButton>
+          <PrimaryButton onClick={restartGame}>Play Again!</PrimaryButton>
         </Alert>
       )}
     </Main>

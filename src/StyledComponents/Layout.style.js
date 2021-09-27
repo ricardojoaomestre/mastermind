@@ -43,7 +43,7 @@ export const Main = styled.main`
   @media ${({ theme }) => theme.devices.tablet} {
     margin-top: 97px;
     width: 608px;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
   }
 `;
 
