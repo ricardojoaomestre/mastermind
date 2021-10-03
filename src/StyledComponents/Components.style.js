@@ -153,3 +153,35 @@ export const AlertMessage = styled.p`
   font-weight: bold;
   text-align: center;
 `;
+
+export const InfoContainer = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  z-index: 1;
+  padding: 20px;
+`;
+
+export const InfoFooter = styled.div`
+  flex: 0;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const InfoTitle = styled.h1`
+  font-size: 1.5rem;
+  margin: 30px auto;
+`;
+
+export const InfoText = styled.section`
+  font-size: 1rem;
+  line-height: 1.7;
+  flex: 1;
+`;

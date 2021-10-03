@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`BasePin must render as expected 1`] = `
-<div
-  class="sc-bdfBQB ioqCIK"
-/>
-`;
